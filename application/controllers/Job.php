@@ -10,13 +10,13 @@ class Job extends Rest_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('ferryschedule');
+		// $this->load->model('ferryschedule');
 	}
 	// Handle an incoming GET ... 	returns a list of ports
-	function index_get()
-	{
-		$this->response($this->ferryschedule->getPorts(), 200);
-	}
+	// function index_get()
+	// {
+	// 	$this->response($this->ferryschedule->getPorts(), 200);
+	// }
 	// The other REST methods are not handled, since we are not doing maintenance
 
 
@@ -49,10 +49,10 @@ class Job extends Rest_Controller {
 	{
 	    if (!$key)
 	    {
-	        $this->response($this->tasks->all(), 200);
+	        $this->response($this->XML_Tasks->all(), 200);
 	    } else
 	    {
-	        $result = $this->tasks->get($key);
+	        $result = $this->Tasks->get($key);
 	        if ($result != null)
 	            $this->response($result, 200);
 	        else
@@ -77,7 +77,7 @@ class Job extends Rest_Controller {
 	}
 
 	// Handle an incoming DELETE - delete a todo item
-	function item_delete($key=null)
+	function index_delete($key=null)
 	{
 	    $this->tasks->delete($key);
 	    $this->response(array('ok'), 200);
